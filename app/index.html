@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BRGroupWare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=Hahmlet:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="app.css">
+</head>
+<body>
+
+<!-- 도장 잉크 번짐 효과 -->
+<svg width="0" height="0" aria-hidden="true" style="position:absolute">
+  <filter id="ink">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="noise"/>
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.6"/>
+  </filter>
+</svg>
+
+<header class="top">
+  <a class="brand" href="#home"><span class="mark">BR</span>GroupWare</a>
+  <input class="search" type="search" placeholder="사람, 문서, 게시글 검색" aria-label="검색">
+  <div class="switch" role="group" aria-label="시연용 사용자 전환" title="로그인 대신 보는 사람을 바꿉니다">
+    <button type="button" data-user="jde"><span class="avatar">정</span>정다은 <small>팀원</small></button>
+    <button type="button" data-user="pjh"><span class="avatar">박</span>박지훈 <small>팀장</small></button>
+  </div>
+</header>
+
+<nav class="side" aria-label="메뉴">
+  <a href="#home">홈</a>
+  <a href="#approval">전자결재 <span class="badge" id="badge"></span></a>
+  <a href="#calendar">일정</a>
+  <a href="#board">게시판</a>
+  <a href="#people">조직도</a>
+  <a href="#attendance">근태</a>
+  <button type="button" class="reset" id="reset">시연 데이터 초기화</button>
+</nav>
+
+<main>
+  <section id="home">
+    <p class="dateline" id="dateline"></p>
+    <h1 id="headline"></h1>
+    <p class="summary" id="summary"></p>
+
+    <div class="layout">
+      <div class="col-main">
+        <div id="mine" hidden>
+          <div class="head">
+            <h2>내 휴가 신청</h2>
+            <a class="btn" href="#leave">휴가 신청</a>
+          </div>
+          <ul class="sheet leaves" id="leaves"></ul>
+        </div>
+
+        <h2>내가 처리할 일</h2>
+        <ul class="sheet queue" id="queue"></ul>
+
+        <div class="head" id="team">
+          <h2>팀 일정</h2>
+          <span class="range" id="range"></span>
+        </div>
+        <div class="sheet band-wrap">
+          <table class="band" id="band"></table>
+        </div>
+      </div>
+
+      <aside class="col-side">
+        <h2>오늘</h2>
+        <div class="sheet day" id="day"></div>
+
+        <h2>공지</h2>
+        <ul class="sheet notices">
+          <li><a href="#board">연말정산 서류 제출 안내</a><time>11.25</time></li>
+          <li><a href="#board">사내 VPN 인증서 갱신 일정</a><time>11.24</time></li>
+          <li><a href="#board">12월 타운홀 장소 변경</a><time>11.20</time></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section id="leave" hidden><h1>휴가 신청</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+  <section id="approval" hidden><h1>전자결재</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+  <section id="calendar" hidden><h1>일정</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+  <section id="board" hidden><h1>게시판</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+  <section id="people" hidden><h1>조직도</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+  <section id="attendance" hidden><h1>근태</h1><p class="placeholder">아직 비어 있는 화면입니다.</p></section>
+</main>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js"></script>
+</body>
+</html>
