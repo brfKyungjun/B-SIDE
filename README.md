@@ -3,6 +3,20 @@
 휴가를 한 번 신청하면 팀장 결재부터 팀 일정 반영까지 끝나는 그룹웨어 프로토타입입니다.
 해커톤 계획은 [docs/BRGroupWare_해커톤_계획서.md](docs/BRGroupWare_해커톤_계획서.md)에 있습니다.
 
+> **BRFrame Workspace (Netlify 배포본)** 은 `workspace/` 에 있습니다. 배포된 단일 HTML을 역설계해 읽을 수 있는 React 소스로 되살렸습니다.
+> 팀원 → 팀장 → 관리자 2단계 연차 결재, 팀 캘린더, 주간보고, 알림 메일함, AI 채팅(시연용 키워드 응답).
+>
+> ```powershell
+> cd workspace
+> npm install
+> npm test        # 결재 흐름, 휴가 검증, 주간보고 규칙
+> npm run build   # dist/index.html 한 장 (JS, CSS 인라인)
+> ```
+>
+> `dist/index.html` 을 브라우저로 바로 열거나 Netlify Drop에 그대로 올립니다.
+> 로직은 `src/flow.js`, 화면은 `src/App.jsx`, 스타일은 `src/styles.css`.
+> 시연 데이터는 오늘 날짜 기준으로 만들어지고 localStorage `brframe-groupware-flow-v1` 에 저장됩니다. 처음 상태로 돌리려면 이 키를 지웁니다.
+
 ## 1분 만에 실행하기
 
 준비물: Python 3.7 이상 (설치 확인: `python --version`)
